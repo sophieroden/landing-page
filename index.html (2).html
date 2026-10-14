@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#FDFBF7]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrumbSync - Unified Order Book for Bakeries & Cafes</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          },
+          colors: {
+            cream: {
+              DEFAULT: '#FDFBF7',
+              muted: '#F9F6F0',
+              card: '#FFFFFF'
+            },
+            beige: {
+              light: '#F5F0E6',
+              DEFAULT: '#EFE8DC',
+              dark: '#D3C7B3'
+            },
+            sage: {
+              light: '#E3E9E2',
+              subtle: '#C8D5C4',
+              DEFAULT: '#8A9A86',
+              dark: '#5B6B57',
+              deep: '#2C3A29'
+            },
+            terracotta: {
+              light: '#FDF2F0',
+              DEFAULT: '#E05A47',
+              dark: '#B92C18'
+            },
+            charcoal: '#222823'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FDFBF7;
+      color: #222823;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Outfit', sans-serif;
+    }
+    /* Smooth scrolling & touch targets */
+    html {
+      scroll-behavior: smooth;
+    }
+    button, a {
+      touch-action: manipulation;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F9F6F0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D3C7B3;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+
+<body class="min-h-full flex flex-col antialiased selection:bg-sage-light selection:text-sage-deep">
+
+  <!-- Sticky Mobile-First Header -->
+  <header class="bg-cream-card/90 backdrop-blur-md border-b border-beige sticky top-0 z-40">
+    <div class="max-w-xl sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <div class="flex items-center space-x-2.5">
+        <div class="w-10 h-10 rounded-xl bg-sage flex items-center justify-center text-cream shadow-md shadow-sage/20">
+          <i data-lucide=" croissant" class="w-5 h-5"></i>
+        </div>
+        <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-charcoal">Crumb<span class="text-sage-dark">Sync</span></span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <a href="app.html" class="inline-flex items-center px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-beige-light border border-beige text-charcoal hover:bg-beige transition-colors space-x-1.5">
+          <i data-lucide="play-circle" class="w-4 h-4 text-sage-dark"></i>
+          <span>Try Demo</span>
+        </a>
+        <a href="#waitlist" class="inline-flex items-center px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-cream bg-sage-dark hover:bg-sage-deep shadow-sm transition-all">
+          <span>Join Waitlist</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-1 flex flex-col">
+
+    <!-- HERO SECTION -->
+    <section class="py-10 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-xl sm:max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-sage-light/70 border border-sage-subtle rounded-full text-xs font-bold text-sage-deep mb-6">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sage-dark"></i>
+        <span>Built specifically for independent bakeries & cafes</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-6xl font-extrabold tracking-tight text-charcoal leading-[1.15] mb-6">
+        Never miss an allergy or double-book an order again.
+      </h1>
+
+      <p class="text-base sm:text-xl text-charcoal/70 font-normal leading-relaxed mb-8 max-w-2xl mx-auto">
+        All your bakery order channels—Instagram DMs, WhatsApp, phone calls, and email—brought together into one calm, foolproof screen with unmissable allergy alerts.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md sm:max-w-none mx-auto">
+        <a href="app.html" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-2xl text-base font-bold text-cream bg-sage-dark hover:bg-sage-deep shadow-lg shadow-sage/20 transition-all space-x-2">
+          <span>Try the Interactive Demo</span>
+          <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+        <a href="#pricing" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-2xl text-base font-bold text-charcoal bg-beige-light border border-beige hover:bg-beige transition-all">
+          View Pricing (€49/mo)
+        </a>
+      </div>
+    </section>
+
+    <!-- THE PROBLEM SECTION -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-beige-light/50 border-y border-beige">
+      <div class="max-w-xl sm:max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-terracotta-dark">The Daily Chaos</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-charcoal mt-1">Sound familiar?</h2>
+        </div>
+
+        <div class="bg-cream-card border border-beige rounded-3xl p-6 sm:p-8 shadow-sm relative">
+          <div class="absolute -top-3.5 left-6 bg-terracotta text-cream px-3 py-0.5 rounded-lg text-xs font-bold uppercase tracking-wider">
+            A Bakery Owner's Reality
+          </div>
+          <p class="text-base sm:text-lg italic text-charcoal/90 leading-relaxed font-medium">
+            "I'm juggling Instagram DMs, missed phone calls from regulars, WhatsApp messages on my personal phone, and a messy paper notebook that lives by the counter. Last week we almost missed a severe peanut allergy on a wedding order because the note was buried in an email thread. There has to be a calmer way."
+          </p>
+          <div class="mt-6 flex items-center space-x-3 pt-4 border-t border-beige">
+            <div class="w-10 h-10 rounded-full bg-sage-light flex items-center justify-center font-bold text-sage-deep">
+              AO
+            </div>
+            <div>
+              <div class="font-bold text-sm text-charcoal">Aoife O'Neill</div>
+              <div class="text-xs text-charcoal/60">Independent Bakery Owner & Pastry Chef</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION (3 Simple Steps) -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-xl sm:max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-sage-dark">Simple by Design</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-charcoal mt-1">How CrumbSync works in 3 steps</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Step 1 -->
+        <div class="bg-cream-card border border-beige rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-sage-light text-sage-deep font-extrabold text-lg flex items-center justify-center mb-6">
+              1
+            </div>
+            <h3 class="text-lg font-bold text-charcoal mb-2">Connect Channels</h3>
+            <p class="text-sm text-charcoal/70 leading-relaxed">
+              Consolidate phone orders, WhatsApp notes, Instagram DMs, and walk-in requests into one unified digital order book.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-beige flex items-center space-x-2 text-xs font-bold text-sage-dark">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            <span>No more lost DMs</span>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-cream-card border border-beige rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-terracotta-light text-terracotta-dark font-extrabold text-lg flex items-center justify-center mb-6">
+              2
+            </div>
+            <h3 class="text-lg font-bold text-charcoal mb-2">Auto-Sort & Giant Alerts</h3>
+            <p class="text-sm text-charcoal/70 leading-relaxed">
+              Every order is formatted instantly. Dietary restrictions and severe nut or dairy allergies appear in unmissable high-visibility warning badges right up front.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-beige flex items-center space-x-2 text-xs font-bold text-terracotta-dark">
+            <i data-lucide="shield-alert" class="w-4 h-4"></i>
+            <span>Zero allergy mistakes</span>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-cream-card border border-beige rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-sage-light text-sage-deep font-extrabold text-lg flex items-center justify-center mb-6">
+              3
+            </div>
+            <h3 class="text-lg font-bold text-charcoal mb-2">Fulfill Without Stress</h3>
+            <p class="text-sm text-charcoal/70 leading-relaxed">
+              Track prep status from pending to ready, monitor daily revenue against targets, and hand your kitchen clear instructions every morning.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-beige flex items-center space-x-2 text-xs font-bold text-sage-dark">
+            <i data-lucide="smile" class="w-4 h-4"></i>
+            <span>Calm morning service</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="py-16 px-4 sm:px-6 lg:px-8 bg-beige-light/50 border-t border-beige">
+      <div class="max-w-xl sm:max-w-3xl mx-auto text-center">
+        <span class="text-xs font-bold uppercase tracking-widest text-sage-dark">Transparent Pricing</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-charcoal mt-1 mb-4">One simple plan for your entire bakery</h2>
+        <p class="text-sm sm:text-base text-charcoal/70 mb-10">No complicated tiers or per-user fees. Everything you need to run your order book seamlessly.</p>
+
+        <div class="bg-cream-card border-2 border-sage-dark/30 rounded-3xl p-8 sm:p-10 shadow-xl max-w-md mx-auto relative overflow-hidden text-left">
+          <div class="absolute top-0 right-0 bg-sage-dark text-cream text-[10px] font-bold uppercase tracking-wider px-4 py-1 rounded-bl-xl">
+            All-Inclusive
+          </div>
+
+          <div class="text-xs font-bold uppercase tracking-widest text-sage-dark mb-1">Standard Bakery Plan</div>
+          <div class="flex items-baseline space-x-2 mb-6">
+            <span class="text-4xl sm:text-5xl font-extrabold text-charcoal">€49</span>
+            <span class="text-sm text-charcoal/60 font-medium">/ month (cancel anytime)</span>
+          </div>
+
+          <ul class="space-y-3.5 mb-8 text-sm font-medium text-charcoal/80">
+            <li class="flex items-center space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-sage-dark flex-shrink-0"></i>
+              <span>Unlimited orders across all channels</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-sage-dark flex-shrink-0"></i>
+              <span>Unmissable allergy & dietary warnings</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-sage-dark flex-shrink-0"></i>
+              <span>Real-time kitchen prep status tracker</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-sage-dark flex-shrink-0"></i>
+              <span>Mobile-first design for counter & back office</span>
+            </li>
+          </ul>
+
+          <a href="#waitlist" class="w-full block text-center py-3.5 rounded-2xl text-base font-bold text-cream bg-sage-dark hover:bg-sage-deep shadow-md transition-all">
+            Join the Waiting List
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAITLIST FORM SECTION -->
+    <section id="waitlist" class="py-16 px-4 sm:px-6 lg:px-8 max-w-xl sm:max-w-2xl mx-auto text-center">
+      <div class="bg-cream-card border border-beige rounded-3xl p-6 sm:p-10 shadow-sm">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-charcoal mb-3">Get early access to CrumbSync</h2>
+        <p class="text-sm sm:text-base text-charcoal/70 mb-8">We're onboarding a limited number of bakeries and cafes for our beta release. Reserve your spot today.</p>
+
+        <!-- Waitlist Form -->
+        <form id="waitlist-form" onsubmit="handleWaitlistSubmit(event)" class="space-y-4">
+          <div>
+            <input type="text" id="waitlist-name" required placeholder="Your Full Name (e.g. Aoife O'Neill)" 
+              class="w-full px-4 py-3 bg-cream-muted border border-beige rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sage font-medium">
+          </div>
+          <div>
+            <input type="email" id="waitlist-email" required placeholder="Bakery or Cafe Email Address" 
+              class="w-full px-4 py-3 bg-cream-muted border border-beige rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sage font-medium">
+          </div>
+          <div>
+            <input type="text" id="waitlist-bakery" placeholder="Bakery / Cafe Name (optional)" 
+              class="w-full px-4 py-3 bg-cream-muted border border-beige rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sage font-medium">
+          </div>
+          <button type="submit" class="w-full py-3.5 rounded-xl text-sm sm:text-base font-bold text-cream bg-sage-dark hover:bg-sage-deep shadow-md transition-all">
+            Secure My Spot
+          </button>
+        </form>
+
+        <!-- Success Thank You Box (Hidden by default) -->
+        <div id="waitlist-success" class="hidden mt-6 p-6 bg-sage-light border border-sage-subtle rounded-2xl text-center space-y-3">
+          <div class="w-12 h-12 rounded-full bg-sage text-cream flex items-center justify-center mx-auto">
+            <i data-lucide="check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-sage-deep">You're on the list!</h3>
+          <p class="text-xs sm:text-sm text-charcoal/80">
+            Thank you for requesting early access. We’ll email you as soon as your bakery's invite to CrumbSync is ready.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-cream-card border-t border-beige py-8 px-4 sm:px-6 lg:px-8 text-center text-xs text-charcoal/60">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <div class="w-6 h-6 rounded-lg bg-sage flex items-center justify-center text-cream">
+          <i data-lucide="croissant" class="w-3.5 h-3.5"></i>
+        </div>
+        <span class="font-bold text-charcoal">CrumbSync</span>
+      </div>
+      <div>&copy; 2026 CrumbSync. Built for independent bakeries & cafes everywhere.</div>
+    </div>
+  </footer>
+
+  <script>
+    /* Waitlist Form Interaction */
+    function handleWaitlistSubmit(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('waitlist-name').value;
+      if (!name) return;
+
+      // Hide form and show friendly thank-you success message box
+      document.getElementById('waitlist-form').classList.add('hidden');
+      document.getElementById('waitlist-success').classList.remove('hidden');
+
+      // Re-initialize icons in success box
+      lucide.createIcons();
+    }
+
+    /* Initialize Lucide Icons on load */
+    window.onload = function() {
+      lucide.createIcons();
+    };
+  </script>
+</body>
+</html>
